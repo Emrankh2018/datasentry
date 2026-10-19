@@ -16,3 +16,12 @@ Stopped at the user's request on 2026-10-19.
   when checked. Repository creation/publishing and hosted CI remain undone.
 - Local generated reports, graph cache, and virtual environment are ignored.
 - No release tag. No further work until the user requests resumption.
+
+## Resumed delivery
+
+The user requested continuation on 2026-10-19. The checkpoint was clean and the
+application code matched the verified revision. GitHub delivery resumed under
+the original mission. The analysis download payload remains covered by tests,
+while native browser analysis file-save completion remains unverified after a
+fresh local-browser check. See the verification receipt and GitHub Actions for
+current delivery evidence.

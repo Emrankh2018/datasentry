@@ -55,3 +55,18 @@ Work stopped at the user's explicit request on 2026-10-19. Implementation and
 local verification are saved in a local Git checkpoint. Public repository
 creation, push, remote-commit verification, and hosted CI have not been
 performed. No release tag was created. Resume only on a new user instruction.
+
+## Resumed delivery check
+
+The user explicitly requested continuation on 2026-10-19. The checkout was clean
+at `93576f1`; application code and tests remained unchanged. A fresh local
+Streamlit process rendered the golden fixture with the expected summary and
+findings. The analysis browser download check again produced no observable
+saved artifact, so its file-save status remains unverified. Download payload
+validation and the verified comparison artifact remain separate evidence.
+
+The authorized public destination is
+<https://github.com/Emrankh2018/datasentry>. Hosted results are available through
+the repository's [CI workflow](https://github.com/Emrankh2018/datasentry/actions/workflows/ci.yml).
+Local source/secret review and final branch identity checks are required for
+the push. No release tag is part of this delivery.
