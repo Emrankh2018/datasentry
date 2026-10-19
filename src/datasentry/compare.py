@@ -5,11 +5,14 @@ import pandas as pd
 from datasentry.profiling import AnalysisConfig, analyze_dataset
 
 
-def _delta(before: float, after: float) -> dict:
+def _delta(before_count: int, before_total: int, after_count: int, after_total: int) -> dict:
+    # Keep unrounded rates until subtraction: 2/3 - 1/3 must round to 33.333333.
+    before = 100 * before_count / before_total if before_total else 0.0
+    after = 100 * after_count / after_total if after_total else 0.0
     change = round(after - before, 6)
     return {
-        "baseline_pct": before,
-        "current_pct": after,
+        "baseline_pct": round(before, 6),
+        "current_pct": round(after, 6),
         "change_percentage_points": change,
         "direction": "regression"
         if change > 0
@@ -87,13 +90,20 @@ def compare_datasets(
         "missing_rate_changes": [
             {
                 "column": c,
-                **_delta(left_profiles[c]["missing_pct"], right_profiles[c]["missing_pct"]),
+                **_delta(
+                    left_profiles[c]["missing_count"],
+                    len(baseline),
+                    right_profiles[c]["missing_count"],
+                    len(current),
+                ),
             }
             for c in common
         ],
         "duplicate_row_rate_change": _delta(
-            before["summary"]["duplicate_row_rate_pct"],
-            after["summary"]["duplicate_row_rate_pct"],
+            before["summary"]["duplicate_row_count"],
+            len(baseline),
+            after["summary"]["duplicate_row_count"],
+            len(current),
         ),
         "caveats": [
             "Rates describe observed datasets; lower missingness or repetition "

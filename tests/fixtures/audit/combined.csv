@@ -1,0 +1,11 @@
+order_id,metric,event_date,place,optional
+0001,-4,2024-02-01,Doha,
+0002,-3,2024-02-02, doha ,
+0003,-2,2024-02-03,DOHA,
+0004,-1,2024-02-04,Al  Wakrah,
+0005,0,2024-02-05,al	wakrah,
+0006,1,2024-02-06,Lusail,NA
+0007,2,2024-02-07,Lusail,NA
+0008,3,2024-02-08,Lusail,NA
+0009,40,2024-02-09,Lusail,NA
+0010,oops,02/10/2024,Lusail,NA

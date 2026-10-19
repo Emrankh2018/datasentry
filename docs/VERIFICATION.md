@@ -70,3 +70,10 @@ The authorized public destination is
 the repository's [CI workflow](https://github.com/Emrankh2018/datasentry/actions/workflows/ci.yml).
 Local source/secret review and final branch identity checks are required for
 the push. No release tag is part of this delivery.
+
+## Independent release audit
+
+[DATASENTRY-002](AUDIT-002.md) records the independent audit, additional tests,
+rounding correction, build-tool advisory mitigation, and the organization-policy
+block affecting actual browser download capture. The release remains BLOCKED
+and untagged until its critical browser verification gate can pass.

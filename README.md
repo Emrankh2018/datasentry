@@ -17,6 +17,7 @@ python -m venv .venv
 .venv\Scripts\Activate.ps1
 # macOS / Linux:
 # source .venv/bin/activate
+python -m pip install --upgrade 'pip>=26.2' 'setuptools>=83'
 python -m pip install -e '.[dev]'
 python -m streamlit run app.py
 ```
@@ -92,6 +93,8 @@ total. Duplicate-row rate uses excess rows divided by dataset rows. Selected
 column repetition rates use non-missing rows as their denominator. Empty
 denominators produce 0%, alongside a row/sample count of zero. Percentages and
 percentage-point changes are rounded to six decimal places.
+Comparison changes are calculated from the original counts before rounding;
+they may differ by a final decimal place from subtracting the displayed rates.
 
 **Row positions are one-based data-row positions, excluding the header.** They
 are not physical CSV line numbers, because quoted fields can contain newlines.
@@ -211,3 +214,9 @@ print(report_json(report))
 ```
 
 MIT licensed. No release tag is created by the initial MVP delivery.
+
+The [independent release audit](docs/AUDIT-002.md) found and corrected a rate-change
+rounding defect and added 46 adversarial cases. The v0.1.0 release remains
+**blocked and untagged** because an organization security policy prevented
+capture of the required browser report download. CLI/report tests do not
+substitute for that browser verification.
