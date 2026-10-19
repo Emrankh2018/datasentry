@@ -1,0 +1,11 @@
+id,amount,country,empty,status
+001,10,Qatar,,NA
+002,11,qatar,,active
+003,12,QATAR,,active
+004,13, Qatar ,,active
+005,14,Oman,,active
+006,15,Oman,,active
+007,16,Oman,,active
+008,17,Oman,,active
+009,18,Oman,,active
+010,999,Oman,,active

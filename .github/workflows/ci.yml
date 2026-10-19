@@ -1,0 +1,22 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.14']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e '.[dev]'
+      - run: python -m pytest
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: python -c "import datasentry; import app"
+      - run: python -m datasentry analyze examples/golden.csv -o analysis.json
+      - run: python -m datasentry compare examples/baseline.csv examples/current.csv -o comparison.json
